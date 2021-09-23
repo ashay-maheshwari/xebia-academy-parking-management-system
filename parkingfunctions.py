@@ -27,12 +27,15 @@ def bike_parking(bike_no, rate, latest_parking_slots):
     for level in levels:
 
         # Look for a spot in Motorcycle section first
-        motorcycle_spots = list(latest_parking_slots[level]["Motorcycle spots"].keys())
+        motorcycle_spots = list(latest_parking_slots[level]["MotorcycleSpots"].keys())
         for row in motorcycle_spots:
-            if len(latest_parking_slots[level]["Motorcycle spots"][row]) == 0:
+
+            if len(latest_parking_slots[level]["MotorcycleSpots"][row]) == 0:
                 print("No parking found")
             else:
                 parking_found = 1
+                print(latest_parking_slots[level]["MotorcycleSpots"][row])
+
                 parking_response_dict["Level"] = level
                 parking_response_dict["Slot Category"] = "Motorcycle Slot"
                 parking_response_dict["Row"] = row
@@ -41,9 +44,9 @@ def bike_parking(bike_no, rate, latest_parking_slots):
                 return parking_response_dict
 
         # Look for a parking in compact spot
-        compact_spots = list(latest_parking_slots[level]["compact spots"].keys())
+        compact_spots = list(latest_parking_slots[level]["CompactSpots"].keys())
         for row in compact_spots:
-            if len(latest_parking_slots[level]["compact spots"][row]) == 0:
+            if len(latest_parking_slots[level]["CompactSpots"][row]) == 0:
                 print("No parking found")
             else:
                 parking_found = 1
@@ -55,9 +58,9 @@ def bike_parking(bike_no, rate, latest_parking_slots):
                 return parking_response_dict
 
         # Look for a parking in large spot
-        large_spots = list(latest_parking_slots[level]["large spots"].keys())
+        large_spots = list(latest_parking_slots[level]["LargeSpots"].keys())
         for row in large_spots:
-            if len(latest_parking_slots[level]["large spots"][row]) == 0:
+            if len(latest_parking_slots[level]["LargeSpots"][row]) == 0:
                 print("No parking found")
             else:
                 parking_found = 1

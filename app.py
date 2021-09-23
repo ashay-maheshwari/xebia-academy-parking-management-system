@@ -25,7 +25,7 @@ def hello():
 
 @app.route("/park-bike")
 def park_motorcycle():
-    check_parking = bike_parking("TS07HK2216","15", fetched_parking_status)
+    check_parking = bike_parking("TS07HK2216", "15", fetched_parking_status)
     return check_parking
 
 
