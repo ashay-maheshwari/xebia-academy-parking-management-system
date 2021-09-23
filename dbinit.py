@@ -1,7 +1,7 @@
 import pymongo
 from parkingslots import *
 from config import *
-print(parking_slots)
+
 
 def connect_db(connection_uri, database):
     """
@@ -42,11 +42,11 @@ def init_collection(dbclient, databasename, collection_name, data_dict):
     else:
         parkingcol = parkingdb[collection_name]
         records = parkingcol.insert_one(data_dict)
-        return records
+        return records.inserted_id
 
-#Connect to database
+# Connect to database
 dbclient = connect_db(connection_string, dbname)
 
-#Create collection and insert records
+# Create collection and insert records
 init_data = init_collection(dbclient, dbname, collection_name, parking_slots)
 print(init_data)
